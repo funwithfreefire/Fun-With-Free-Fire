@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun With Free Fire | Pro Gaming Hub</title>
+    
+    <meta name="description" content="Join the ultimate Free Fire gaming community. Tips, Tournaments, and Fun!">
+    <meta name="theme-color" content="#ff4500">
+    <link rel="manifest" href="manifest.json">
+    
+    <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+
+    <style>
+        body { 
+            background-color: #1a1a1a; 
+            color: #ffffff; 
+            font-family: 'Press Start 2P', cursive;
+            padding: 20px;
+            margin: 0;
+        }
+       .hero {
+            text-align: center;
+            padding: 50px 10px;
+            border-bottom: 4px solid #ff4500;
+        }
+       .ff-orange { color: #ff4500; }
+       .section-box { margin: 30px 0; }
+       .footer { text-align: center; font-size: 10px; margin-top: 50px; color: #888; }
+        
+        /* Mobile Specific */
+        @media (max-width: 600px) {
+            body { font-size: 12px; }
+           .hero h1 { font-size: 18px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hero">
+        <h1 class="ff-orange">FUN WITH FREE FIRE</h1>
+        <p>Welcome to the Battleground!</p>
+        <br>
+        <button type="button" class="nes-btn is-warning" id="installApp">Download App</button>
+    </div>
+
+    <div class="section-box nes-container is-dark with-title">
+        <p class="title">Latest News</p>
+        <ul class="nes-list is-disc">
+            <li>New Elite Pass is coming soon!</li>
+            <li>Join our weekly 1vs1 Tournament.</li>
+            <li>Best sensitivity settings updated.</li>
+        </ul>
+    </div>
+
+    <div class="section-box nes-container is-rounded is-dark">
+        <p>Humari community ka hissa banein aur Free Fire ke pro players ke saath kheleinh.</p>
+        <a href="#" class="nes-badge">
+            <span class="is-primary">Join Discord</span>
+        </a>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2026 Fun With Free Fire | Built for Legends</p>
+    </div>
+
+    <script>
+        // Service Worker Register
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js')
+           .then(() => console.log("Service Worker Active!"));
+        }
+
+        // App Install Logic
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            document.getElementById('installApp').style.display = 'inline-block';
+        });
+
+        document.getElementById('installApp').addEventListener('click', async () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                if (outcome === 'accepted') deferredPrompt = null;
+            }
+        });
+    </script>
+</body>
+</html>
