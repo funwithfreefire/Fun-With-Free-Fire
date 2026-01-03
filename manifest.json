@@ -1,0 +1,22 @@
+{
+  "name": "Fun With Free Fire",
+  "short_name": "FF-Fun",
+  "description": "The ultimate gaming hub for Free Fire fans.",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#1a1a1a",
+  "theme_color": "#ff4500",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "https://via.placeholder.com/192x192/ff4500/ffffff?text=FF",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://via.placeholder.com/512x512/ff4500/ffffff?text=FF-Fun",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
